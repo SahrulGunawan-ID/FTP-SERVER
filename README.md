@@ -1,3 +1,6 @@
+# BUILD TEST
+[![Generate Provenance](https://github.com/SahrulGunawan-ID/FTP-SERVER/actions/workflows/generate-provenance.yml/badge.svg?branch=main&event=push)](https://github.com/SahrulGunawan-ID/FTP-SERVER/actions/workflows/generate-provenance.yml)
+
 ```markdown
 # FTP-SERVER
 
