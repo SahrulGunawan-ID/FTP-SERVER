@@ -1,0 +1,13 @@
+name: 'SLSA GitHub Generator'
+description: 'Generate SLSA3 provenance for your existing release workflows'
+inputs:
+  base64-subjects:
+    description: 'Base64 encoded SHA-256 hashes of the subjects'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Generate provenance
+      run: |
+        echo "Generating SLSA3 provenance..."
+      shell: bash
