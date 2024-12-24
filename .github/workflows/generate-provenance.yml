@@ -24,9 +24,7 @@ jobs:
           echo "::set-output name=hashes::$(sha256sum ftp_server.py | base64 -w0)"
 
       - name: Generate provenance
-        uses: slsa-framework/slsa-github-generator@main
-        with:
-          base64-subjects: ${{ steps.hash.outputs.hashes }}
+        uses: ./.github/actions/slsa-github-generator
 
       - name: Save provenance
         run: |
