@@ -1,0 +1,34 @@
+name: Generate Provenance
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build project
+        run: |
+          echo "Building FTP Server project..."
+
+      - name: Generate hashes
+        id: hash
+        run: |
+          sha256sum ftp_server.py | base64 -w0
+          echo "::set-output name=hashes::$(sha256sum ftp_server.py | base64 -w0)"
+
+      - name: Generate provenance
+        uses: slsa-framework/slsa-github-generator@main
+        with:
+          base64-subjects: ${{ steps.hash.outputs.hashes }}
+
+      - name: Save provenance
+        run: |
+          echo "Saving provenance..."
+          # Simpan atau upload provenance ke tempat yang diinginkan
